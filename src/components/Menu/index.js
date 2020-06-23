@@ -12,9 +12,16 @@ import {
   SignOutButtomText,
 } from './styles';
 
-const Menu = () => {
+const Menu = ({ translateY }) => {
   return (
-    <Container>
+    <Container
+      style={{
+        opacity: translateY.interpolate({
+          inputRange: [0, 200],
+          outputRange: [0, 1],
+        }),
+      }}
+    >
       <Code>
         <QRCode
           value="https://jcolscript.com.br"

@@ -1,11 +1,28 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {Container, TabsContaier, TabItem, TabText} from './styles';
+import { Container, TabsContaier, TabItem, TabText } from './styles';
 
-export default function Tabs() {
+export default function Tabs({ translateY }) {
   return (
-    <Container>
+    <Container
+      style={{
+        transform: [
+          {
+            translateY: translateY.interpolate({
+              inputRange: [0, 320],
+              outputRange: [0, 30],
+              extrapolate: 'clamp',
+            }),
+          },
+        ],
+        opacity: translateY.interpolate({
+          inputRange: [0, 100],
+          outputRange: [1, 0.1],
+          extrapolate: 'clamp',
+        }),
+      }}
+    >
       <TabsContaier>
         <TabItem>
           <Icon name="phone-iphone" size={24} color="#f9d423" />
